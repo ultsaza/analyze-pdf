@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Loader2, FileText, X, Copy } from "lucide-react"
 import { toast } from "@/components/ui/use-toast"
 import PDFViewer from "@/components/pdf-viewer"
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
 
 export default function DocumentAnalyzer() {
   const [files, setFiles] = useState<File[]>([])
@@ -121,7 +124,7 @@ export default function DocumentAnalyzer() {
 
   return (
     <div className="bg-white shadow rounded-lg">
-      <div className="text-2xl font-bold p-6 border-b">文書解析アプリケーション</div>
+      <div className="text-2xl font-bold p-6 border-b">明細PDF解析</div>
       <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 p-6 border-r">
           <div className="mb-6">
@@ -206,7 +209,9 @@ export default function DocumentAnalyzer() {
                 </Button>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg border relative">
-                <pre className="text-sm overflow-auto max-h-[500px]">{result}</pre>
+                <SyntaxHighlighter language="json" style={docco} className="text-sm overflow-auto max-h-[500px]">
+                  {result || ''}
+                </SyntaxHighlighter>
               </div>
             </div>
           )}
