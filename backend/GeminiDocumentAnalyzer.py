@@ -85,7 +85,7 @@ class GeminiDocumentAnalyzer:
         
         # Default prompt if none provided
         default_prompt = """
-        prompt
+        以下の明細に書かれている情報を抽出してください
         """
         
         prompt = custom_prompt if custom_prompt else default_prompt
